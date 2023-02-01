@@ -1,0 +1,11 @@
+"D:\narm afzar\clion\CLion 2022.2.4\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=D:/narm afzar/clion/CLion 2022.2.4/bin/ninja/win/ninja.exe" -G Ninja -S D:\poroje\risk -B D:\poroje\risk\cmake-build-debug
+-- The C compiler identification is GNU 12.2.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: C:/mingw32/bin/gcc.exe - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+LIBRARIES = C:/mingw32/lib/liballegro-debug.dll.a;C:/mingw32/lib/liballegro.dll.a;C:/mingw32/lib/liballegro_acodec-debug.dll.a;C:/mingw32/lib/liballegro_acodec.dll.a;C:/mingw32/lib/liballegro_audio-debug.dll.a;C:/mingw32/lib/liballegro_audio.dll.a;C:/mingw32/lib/liballegro_color-debug.dll.a;C:/mingw32/lib/liballegro_color.dll.a;C:/mingw32/lib/liballegro_dialog-debug.dll.a;C:/mingw32/lib/liballegro_dialog.dll.a;C:/mingw32/lib/liballegro_font-debug.dll.a;C:/mingw32/lib/liballegro_font.dll.a;C:/mingw32/lib/liballegro_image-debug.dll.a;C:/mingw32/lib/liballegro_image.dll.a;C:/mingw32/lib/liballegro_main-debug.dll.a;C:/mingw32/lib/liballegro_main.dll.a;C:/mingw32/lib/liballegro_memfile-debug.dll.a;C:/mingw32/lib/liballegro_memfile.dll.a;C:/mingw32/lib/liballegro_monolith-debug.dll.a;C:/mingw32/lib/liballegro_monolith.dll.a;C:/mingw32/lib/liballegro_physfs-debug.dll.a;C:/mingw32/lib/liballegro_physfs.dll.a;C:/mingw32/lib/liballegro_primitives-debug.dll.a;C:/mingw32/lib/liballegro_primitives.dll.a;C:/mingw32/lib/liballegro_ttf-debug.dll.a;C:/mingw32/lib/liballegro_ttf.dll.a;C:/mingw32/lib/liballegro_video-debug.dll.a;C:/mingw32/lib/liballegro_video.dll.a;C:/mingw32/lib/libbfd.a;C:/mingw32/lib/libctf-nobfd.a;C:/mingw32/lib/libctf.a;C:/mingw32/lib/libiberty.a;C:/mingw32/lib/libmangle.a;C:/mingw32/lib/libopcodes.a
+-- Configuring done
+-- Generating done
+-- Build files have been written to: D:/poroje/risk/cmake-build-debug
