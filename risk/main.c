@@ -652,17 +652,17 @@ void fight(int tedad ,int x1 , int y1 , int x2 , int y2, int z){
         al_draw_filled_rectangle(1275, 325, 1475, 425, blue);
         al_draw_filled_rectangle(1275, 450, 1475, 550, blue);
         if(z == 1) {
-            al_draw_text(font, yellow, 1280, 350, 0, "change soldier");
-            al_draw_text(font, yellow, 1350, 475, 0, "fight");
+            al_draw_text(font, yellow, 1350, 350, 0, "fight");
+            al_draw_text(font, yellow, 1280, 475, 0, "change soldier");
         } else {
             if (z == 2)
-                al_draw_text(font, purple, 1280, 350, 0, "change soldier");
+                al_draw_text(font, purple, 1350, 350, 0, "fight");
             else
-                al_draw_text(font, yellow, 1280, 350, 0, "change soldier");
+                al_draw_text(font, yellow, 1350, 350, 0, "fight");
             if (z == 3)
-                al_draw_text(font, purple, 1350, 475, 0, "fight");
+                al_draw_text(font, purple, 1280, 475, 0, "change soldier");
             else
-                al_draw_text(font, yellow, 1350, 475, 0, "fight");
+                al_draw_text(font, yellow, 1280, 475, 0, "change soldier");
             al_draw_rectangle(x1 +5,y1 +5 ,x2 -5,y2 -5,purple,10);
         }
         al_flip_display();
@@ -821,8 +821,8 @@ void hamle_be_zamin_ha(int tedad ,int i , int j ,int person){
                 if(person2[j][i + 1] != 0){
                     draw_dorost_circle(i + 1 , j);
                 }
-                if(person2[j - 1][i] != 0){
-                    draw_dorost_circle(i , j - 1);
+                if(person2[j][i - 1] != 0){
+                    draw_dorost_circle(i - 1 , j);
                 }
             } else if( i == 5 && j != 0 && j != 6){
                 if(person2[j][i - 1] != 0){
@@ -1044,115 +1044,52 @@ void get_soldier(int tedad, int p , int nobat){
         al_flip_display();
     }
 }
-int select_map2(int xmouse , int ymouse ,int person){
+
+
+int select_map2(int xmouse , int ymouse ,int person)    {
     if(person == 1) {
         for (int i = 0; i < 6; ++i) {
             for (int j = 0; j < 7; ++j) {
                 if (person2[j][i] == 0 && select(150 * (i + 1), 100 * (j + 1), 150 * (i + 1) + 150, 100 * (j + 1) + 100, xmouse, ymouse)) {
                     if (j != 6 && i == 0 ) {
-                        al_draw_filled_rectangle(150 * (i + 1), 100 * (j + 1), 150 * (i + 1) + 150, 100 * (j + 1) + 100,black);
-                        al_draw_rectangle(150 * (i + 1), 100 * (j + 1), 150 * (i + 1) + 150, 100 * (j + 1) + 100,al_map_rgb(128, 128, 128), 2);
-                        person1[j][i] += 1;
-                        adad(150 * (i + 1), 100 * (j + 1), person1[j][i] , person);
                         return 1;
                     } else if (j < 2 && i == 1) {
-                        al_draw_filled_rectangle(150 * (i + 1), 100 * (j + 1), 150 * (i + 1) + 150, 100 * (j + 1) + 100,black);
-                        al_draw_rectangle(150 * (i + 1), 100 * (j + 1), 150 * (i + 1) + 150, 100 * (j + 1) + 100,al_map_rgb(128, 128, 128), 2);
-                        person1[j][i] += 1;
-                        adad(150 * (i + 1), 100 * (j + 1), person1[j][i],person);
                         return 1;
                     } else if (j == 5 && i == 1) {
-                        al_draw_filled_rectangle(150 * (i + 1), 100 * (j + 1), 150 * (i + 1) + 150, 100 * (j + 1) + 100,black);
-                        al_draw_rectangle(150 * (i + 1), 100 * (j + 1), 150 * (i + 1) + 150, 100 * (j + 1) + 100,al_map_rgb(128, 128, 128), 2);
-                        person1[j][i] += 1;
-                        adad(150 * (i + 1), 100 * (j + 1), person1[j][i] , person);
                         return 1;
                     } else if (i <= 3 && i >= 2 && j <= 2) {
-                        al_draw_filled_rectangle(150 * (i + 1), 100 * (j + 1), 150 * (i + 1) + 150, 100 * (j + 1) + 100,darkred);
-                        al_draw_rectangle(150 * (i + 1), 100 * (j + 1), 150 * (i + 1) + 150, 100 * (j + 1) + 100,al_map_rgb(128, 128, 128), 2);
-                        person1[j][i] += 1;
-                        adad(150 * (i + 1), 100 * (j + 1), person1[j][i] , person);
                         return 1;
                     } else if (i >= 4 && j <= 3) {
-                        al_draw_filled_rectangle(150 * (i + 1), 100 * (j + 1), 150 * (i + 1) + 150, 100 * (j + 1) + 100,green);
-                        al_draw_rectangle(150 * (i + 1), 100 * (j + 1), 150 * (i + 1) + 150, 100 * (j + 1) + 100,al_map_rgb(128, 128, 128), 2);
-                        person1[j][i] += 1;
-                        adad(150 * (i + 1), 100 * (j + 1), person1[j][i],person);
                         return 1;
                     } else if (i <= 3 && i >= 2 && j <= 5 && j >= 4) {
-                        al_draw_filled_rectangle(150 * (i + 1), 100 * (j + 1), 150 * (i + 1) + 150, 100 * (j + 1) + 100,yellow);
-                        al_draw_rectangle(150 * (i + 1), 100 * (j + 1), 150 * (i + 1) + 150, 100 * (j + 1) + 100,al_map_rgb(128, 128, 128), 2);
-                        person1[j][i] += 1;
-                        adad(150 * (i + 1), 100 * (j + 1), person1[j][i] ,person);
                         return 1;
                     } else if (i == 3 && j == 3) {
-                        al_draw_filled_rectangle(150 * (i + 1), 100 * (j + 1), 150 * (i + 1) + 150, 100 * (j + 1) + 100,yellow);
-                        al_draw_rectangle(150 * (i + 1), 100 * (j + 1), 150 * (i + 1) + 150, 100 * (j + 1) + 100,al_map_rgb(128, 128, 128), 2);
-                        person1[j][i] += 1;
-                        adad(150 * (i + 1), 100 * (j + 1), person1[j][i] ,person);
                         return 1;
                     } else if (j == 6 && i == 2) {
-                        al_draw_filled_rectangle(150 * (i + 1), 100 * (j + 1), 150 * (i + 1) + 150, 100 * (j + 1) + 100,yellow);
-                        al_draw_rectangle(150 * (i + 1), 100 * (j + 1), 150 * (i + 1) + 150, 100 * (j + 1) + 100,al_map_rgb(128, 128, 128), 2);
-                        person1[j][i] += 1;
-                        adad(150 * (i + 1), 100 * (j + 1), person1[j][i],person);
                         return 1;
                     }
                 }
             }
         }
-    }
-    if(person == 2) {
+    }else if(person == 2) {
         for (int i = 0; i < 6; ++i) {
             for (int j = 0; j < 7; ++j) {
                 if (person1[j][i] == 0 &&select(150 * (i + 1), 100 * (j + 1), 150 * (i + 1) + 150, 100 * (j + 1) + 100, xmouse, ymouse)) {
                     if (j != 6 && i == 0) {
-                        al_draw_filled_rectangle(150 * (i + 1), 100 * (j + 1), 150 * (i + 1) + 150, 100 * (j + 1) + 100,black);
-                        al_draw_rectangle(150 * (i + 1), 100 * (j + 1), 150 * (i + 1) + 150, 100 * (j + 1) + 100,al_map_rgb(128, 128, 128), 2);
-                        person2[j][i] += 1;
-                        adad(150 * (i + 1), 100 * (j + 1), person2[j][i] , person);
                         return 1;
                     } else if (j < 2 && i == 1) {
-                        al_draw_filled_rectangle(150 * (i + 1), 100 * (j + 1), 150 * (i + 1) + 150, 100 * (j + 1) + 100,black);
-                        al_draw_rectangle(150 * (i + 1), 100 * (j + 1), 150 * (i + 1) + 150, 100 * (j + 1) + 100,al_map_rgb(128, 128, 128), 2);
-                        person2[j][i] += 1;
-                        adad(150 * (i + 1), 100 * (j + 1), person2[j][i] , person);
                         return 1;
                     } else if (j == 5 && i == 1) {
-                        al_draw_filled_rectangle(150 * (i + 1), 100 * (j + 1), 150 * (i + 1) + 150, 100 * (j + 1) + 100,black);
-                        al_draw_rectangle(150 * (i + 1), 100 * (j + 1), 150 * (i + 1) + 150, 100 * (j + 1) + 100,al_map_rgb(128, 128, 128), 2);
-                        person2[j][i] += 1;
-                        adad(150 * (i + 1), 100 * (j + 1), person2[j][i] , person);
                         return 1;
                     } else if (i <= 3 && i >= 2 && j <= 2) {
-                        al_draw_filled_rectangle(150 * (i + 1), 100 * (j + 1), 150 * (i + 1) + 150, 100 * (j + 1) + 100,darkred);
-                        al_draw_rectangle(150 * (i + 1), 100 * (j + 1), 150 * (i + 1) + 150, 100 * (j + 1) + 100,al_map_rgb(128, 128, 128), 2);
-                        person2[j][i] += 1;
-                        adad(150 * (i + 1), 100 * (j + 1), person2[j][i] , person);
                         return 1;
                     } else if (i >= 4 && j <= 3) {
-                        al_draw_filled_rectangle(150 * (i + 1), 100 * (j + 1), 150 * (i + 1) + 150, 100 * (j + 1) + 100,green);
-                        al_draw_rectangle(150 * (i + 1), 100 * (j + 1), 150 * (i + 1) + 150, 100 * (j + 1) + 100,al_map_rgb(128, 128, 128), 2);
-                        person2[j][i] += 1;
-                        adad(150 * (i + 1), 100 * (j + 1), person2[j][i] , person);
                         return 1;
                     } else if (i <= 3 && i >= 2 && j <= 5 && j >= 4) {
-                        al_draw_filled_rectangle(150 * (i + 1), 100 * (j + 1), 150 * (i + 1) + 150, 100 * (j + 1) + 100,yellow);
-                        al_draw_rectangle(150 * (i + 1), 100 * (j + 1), 150 * (i + 1) + 150, 100 * (j + 1) + 100,al_map_rgb(128, 128, 128), 2);
-                        person2[j][i] += 1;
-                        adad(150 * (i + 1), 100 * (j + 1), person2[j][i] , person);
                         return 1;
                     } else if (i == 3 && j == 3) {
-                        al_draw_filled_rectangle(150 * (i + 1), 100 * (j + 1), 150 * (i + 1) + 150, 100 * (j + 1) + 100,yellow);
-                        al_draw_rectangle(150 * (i + 1), 100 * (j + 1), 150 * (i + 1) + 150, 100 * (j + 1) + 100,al_map_rgb(128, 128, 128), 2);
-                        person2[j][i] += 1;
-                        adad(150 * (i + 1), 100 * (j + 1), person2[j][i] , person);
                         return 1;
                     } else if (j == 6 && i == 2) {
-                        al_draw_filled_rectangle(150 * (i + 1), 100 * (j + 1), 150 * (i + 1) + 150, 100 * (j + 1) + 100,yellow);
-                        al_draw_rectangle(150 * (i + 1), 100 * (j + 1), 150 * (i + 1) + 150, 100 * (j + 1) + 100,al_map_rgb(128, 128, 128), 2);
-                        person2[j][i] += 1;
-                        adad(150 * (i + 1), 100 * (j + 1), person2[j][i] , person);
                         return 1;
                     }
                 }
@@ -1342,19 +1279,30 @@ int main() {
                                         al_is_event_queue_empty(queue);
                                         al_wait_for_event(queue, &event);
                                         if (event.type == ALLEGRO_EVENT_MOUSE_BUTTON_UP) {
-                                            if (dorost_select_map(nobat, event.mouse.x, event.mouse.y,1) == 1 &&tedad_select == 0) {
+                                            if (tedad_select == 0 && dorost_select_map(nobat, event.mouse.x, event.mouse.y,1) == 1) {
                                                 tedad_select = 1;
                                                 dorost_select(nobat, event.mouse.x, event.mouse.y);
+                                                while (1) {
+                                                    al_rest(0.01);
+                                                    al_is_event_queue_empty(queue);
+                                                    al_wait_for_event(queue, &event);
+                                                    if (event.type == ALLEGRO_EVENT_MOUSE_BUTTON_UP) {
+                                                        if (select_map2(event.mouse.x, event.mouse.y,nobat)) {
+                                                            printf("aaa%d\n",nobat);
+                                                        }
+                                                    }
+                                                    if (select(1150, 325, 1250, 425, event.mouse.x, event.mouse.y) == 1) {
+                                                        destroy_dorost_circle();
+                                                        al_flip_display();
+                                                        tedad_select = 0;
+                                                        clear_get_sarbaz();
+                                                        fight(tedad,0,0,0,0,1);
+                                                        finish();
+                                                        break;
+                                                    }
+                                                }
                                             }
-                                            if (select(1150, 325, 1250, 425, event.mouse.x, event.mouse.y) == 1) {
-                                                destroy_dorost_circle();
-                                                al_flip_display();
-                                                tedad_select = 0;
-                                                clear_get_sarbaz();
-                                                fight(tedad,0,0,0,0,1);
-                                                finish();
-                                                break;
-                                            }
+                                            break;
                                         }
                                     }
                                     tedad_select = 0;
