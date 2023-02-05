@@ -37,27 +37,27 @@ int sarzaminha[29][2]={ {0,0},
                         {1,5},
 
                         {2,0},
-                       {2,1},
-                       {2,2},
-                       {3,0},
-                       {3,1},
-                       {3,2},
+                        {2,1},
+                        {2,2},
+                        {3,0},
+                        {3,1},
+                        {3,2},
 
-                       {4,0},
-                       {4,1},
-                       {4,2},
-                       {4,3},
-                       {5,0},
-                       {5,1},
-                       {5,2},
-                       {5,3},
+                        {4,0},
+                        {4,1},
+                        {4,2},
+                        {4,3},
+                        {5,0},
+                        {5,1},
+                        {5,2},
+                        {5,3},
 
-                       {2,4},
-                       {2,5},
-                       {2,6},
-                       {3,3},
-                       {3,4},
-                       {3,5}};
+                        {2,4},
+                        {2,5},
+                        {2,6},
+                        {3,3},
+                        {3,4},
+                        {3,5}};
 
 int sarzamin_USA[9][2] ={{0,0},
                          {0,1},
@@ -70,11 +70,11 @@ int sarzamin_USA[9][2] ={{0,0},
                          {1,5}};
 
 int sarzamin_Europe[6][2] ={{2,0},
-                           {2,1},
-                           {2,2},
-                           {3,0},
-                           {3,1},
-                           {3,2}};
+                            {2,1},
+                            {2,2},
+                            {3,0},
+                            {3,1},
+                            {3,2}};
 
 int sarzamin_Asia[8][2]  ={{4,0},
                            {4,1},
@@ -96,6 +96,8 @@ int person1[7][6]={0};
 int person2[7][6]={0};
 int person3[7][6]={0};
 int person4[7][6]={0};
+
+int i11 , i12 , i13 , i14,j11,j12,j13,j14;
 
 void person(void){
     al_clear_to_color(al_map_rgb(0, 0, 0));
@@ -646,28 +648,55 @@ void print_tedad_sarbaz(int soldier , int person){
     al_flip_display();
 }
 
-void fight(int tedad ,int x1 , int y1 , int x2 , int y2, int z){
+
+void fight(int tedad , int z ){
+    font = al_load_ttf_font("D:\\poroje\\risk\\tahoma.ttf", 30, 0);
     if(tedad == 2) {
-        font = al_load_ttf_font("D:\\poroje\\risk\\tahoma.ttf", 30, 0);
         al_draw_filled_rectangle(1275, 325, 1475, 425, blue);
-        al_draw_filled_rectangle(1275, 450, 1475, 550, blue);
-        if(z == 1) {
+        if(z == 1){
             al_draw_text(font, yellow, 1350, 350, 0, "fight");
-            al_draw_text(font, yellow, 1280, 475, 0, "change soldier");
-        } else {
-            if (z == 2)
-                al_draw_text(font, purple, 1350, 350, 0, "fight");
-            else
-                al_draw_text(font, yellow, 1350, 350, 0, "fight");
-            if (z == 3)
-                al_draw_text(font, purple, 1280, 475, 0, "change soldier");
-            else
-                al_draw_text(font, yellow, 1280, 475, 0, "change soldier");
-            al_draw_rectangle(x1 +5,y1 +5 ,x2 -5,y2 -5,purple,10);
+        } else{
+            al_draw_text(font, purple, 1350, 350, 0, "fight");
+            al_draw_rectangle(1275 +5,325 +5 ,1475 -5,425 -5,purple,10);
+            al_draw_filled_rectangle(1150,325,1250,425,darkgreen);
+            al_draw_text(font,yellow,1165,350,0,"finish");
         }
-        al_flip_display();
+    } else{
+        al_draw_filled_rectangle(1275, 450, 1475, 550, blue);
+        if(z == 1){
+            al_draw_text(font, yellow, 1280, 475, 0, "change soldier");
+        } else{
+            al_draw_text(font, purple, 1280, 475, 0, "change soldier");
+            al_draw_rectangle(1275 +5,450 +5 ,1475 -5,550 -5,purple,10);
+            al_draw_filled_rectangle(1150,450,1250,550,darkgreen);
+            al_draw_text(font,yellow,1165,475,0,"finish");
+        }
     }
+    al_flip_display();
 }
+
+//void fight(int tedad ,int x1 , int y1 , int x2 , int y2, int z){
+//    if(tedad == 2) {
+//        font = al_load_ttf_font("D:\\poroje\\risk\\tahoma.ttf", 30, 0);
+//        al_draw_filled_rectangle(1275, 325, 1475, 425, blue);
+//        al_draw_filled_rectangle(1275, 450, 1475, 550, blue);
+//        if(z == 1) {
+//            al_draw_text(font, yellow, 1350, 350, 0, "fight");
+//            al_draw_text(font, yellow, 1280, 475, 0, "change soldier");
+//        } else {
+//            if (z == 2)
+//                al_draw_text(font, purple, 1350, 350, 0, "fight");
+//            else
+//                al_draw_text(font, yellow, 1350, 350, 0, "fight");
+//            if (z == 3)
+//                al_draw_text(font, purple, 1280, 475, 0, "change soldier");
+//            else
+//                al_draw_text(font, yellow, 1280, 475, 0, "change soldier");
+//            al_draw_rectangle(x1 +5,y1 +5 ,x2 -5,y2 -5,purple,10);
+//        }
+//        al_flip_display();
+//    }
+//}
 
 void finish(void){
     al_draw_filled_rectangle(1275,600,1475,700,darkgreen);
@@ -692,26 +721,42 @@ void draw_circle(int x1 ,int y1){
     al_flip_display();
 }
 
-void dorost_select(int person ,int xmouse ,int ymouse){
+void dorost_select(int person ,int xmouse ,int ymouse , int *i1 , int *j1){
     if(person == 1) {
         for (int i = 0; i < 6; ++i) {
             for (int j = 0; j < 7; ++j) {
                 if (person1[j][i] != 0 && select(150 * (i + 1), 100 * (j + 1), 150 * (i + 1) + 150, 100 * (j + 1) + 100, xmouse, ymouse)) {
                     if (j != 6 && i == 0 ) {
+                        *i1 = i;
+                        *j1 = j;
                         draw_circle(150 * (i + 1), 100 * (j + 1));
                     } else if (j < 2 && i == 1) {
+                        *i1 = i;
+                        *j1 = j;
                         draw_circle(150 * (i + 1), 100 * (j + 1));
                     } else if (j == 5 && i == 1) {
+                        *i1 = i;
+                        *j1 = j;
                         draw_circle(150 * (i + 1), 100 * (j + 1));
                     } else if (i <= 3 && i >= 2 && j <= 2) {
+                        *i1 = i;
+                        *j1 = j;
                         draw_circle(150 * (i + 1), 100 * (j + 1));
                     } else if (i >= 4 && j <= 3) {
+                        *i1 = i;
+                        *j1 = j;
                         draw_circle(150 * (i + 1), 100 * (j + 1));
                     } else if (i <= 3 && i >= 2 && j <= 5 && j >= 4) {
+                        *i1 = i;
+                        *j1 = j;
                         draw_circle(150 * (i + 1), 100 * (j + 1));
                     } else if (i == 3 && j == 3) {
+                        *i1 = i;
+                        *j1 = j;
                         draw_circle(150 * (i + 1), 100 * (j + 1));
                     } else if (j == 6 && i == 2) {
+                        *i1 = i;
+                        *j1 = j;
                         draw_circle(150 * (i + 1), 100 * (j + 1));
                     }
                 }
@@ -758,8 +803,11 @@ int destroy_dorost_select(int person ,int xmouse ,int ymouse){
     }
 }
 
-void draw_dorost_circle(int i , int j){
-    al_draw_circle(((i+1) * 150) + 75, ((j+1) * 100) + 50,45,white,5);
+void draw_dorost_circle(int i , int j , int kodom){
+    if(kodom == 1)
+        al_draw_circle(((i+1) * 150) + 75, ((j+1) * 100) + 50,45,white,5);
+    else if(kodom == 2)
+        al_draw_circle(((i+1) * 150) + 75, ((j+1) * 100) + 50,45,darkgreen,5);
     al_flip_display();
 }
 
@@ -793,70 +841,70 @@ void hamle_be_zamin_ha(int tedad ,int i , int j ,int person){
         if(person == 1){
             if(i >= 1 && i <= 4 && j >= 1 && j <= 5){
                 if(person2[j][i - 1] != 0){
-                    draw_dorost_circle(i - 1 , j);
+                    draw_dorost_circle(i - 1 , j , 1);
                 }
                 if(person2[j][i + 1] != 0){
-                    draw_dorost_circle(i + 1 , j);
+                    draw_dorost_circle(i + 1 , j, 1);
                 }
                 if(person2[j - 1][i] != 0){
-                    draw_dorost_circle(i , j - 1);
+                    draw_dorost_circle(i , j - 1, 1);
                 }
                 if(person2[j + 1][i] != 0){
-                    draw_dorost_circle(i , j + 1);
+                    draw_dorost_circle(i , j + 1, 1);
                 }
             } else if (i == 0 && j != 0 && j != 6){
                 if(person2[j][i + 1] != 0){
-                    draw_dorost_circle(i + 1 , j);
+                    draw_dorost_circle(i + 1 , j, 1);
                 }
                 if(person2[j - 1][i] != 0){
-                    draw_dorost_circle(i , j - 1);
+                    draw_dorost_circle(i , j - 1, 1);
                 }
                 if(person2[j + 1][i] != 0){
-                    draw_dorost_circle(i , j + 1);
+                    draw_dorost_circle(i , j + 1, 1);
                 }
             } else if( j == 0 && i != 0 && i != 5){
                 if(person2[j + 1][i] != 0){
-                    draw_dorost_circle(i , j + 1);
+                    draw_dorost_circle(i , j + 1, 1);
                 }
                 if(person2[j][i + 1] != 0){
-                    draw_dorost_circle(i + 1 , j);
+                    draw_dorost_circle(i + 1 , j, 1);
                 }
                 if(person2[j][i - 1] != 0){
-                    draw_dorost_circle(i - 1 , j);
+                    draw_dorost_circle(i - 1 , j, 1);
                 }
             } else if( i == 5 && j != 0 && j != 6){
                 if(person2[j][i - 1] != 0){
-                    draw_dorost_circle(i - 1 , j);
+                    draw_dorost_circle(i - 1 , j, 1);
                 }
                 if(person2[j - 1][i] != 0){
-                    draw_dorost_circle(i , j - 1);
+                    draw_dorost_circle(i , j - 1, 1);
                 }
                 if(person2[j + 1][i] != 0){
-                    draw_dorost_circle(i , j + 1);
+                    draw_dorost_circle(i , j + 1, 1);
                 }
             } else if ( j == 6 && i != 0 && i != 5){
                 if(person2[j][i - 1] != 0){
-                    draw_dorost_circle(i - 1 , j);
+                    draw_dorost_circle(i - 1 , j, 1);
                 }
                 if(person2[j][i + 1] != 0){
-                    draw_dorost_circle(i + 1 , j);
+                    draw_dorost_circle(i + 1 , j, 1);
                 }
                 if(person2[j - 1][i] != 0){
-                    draw_dorost_circle(i , j - 1);
+                    draw_dorost_circle(i , j - 1, 1);
                 }
             } else if ( i == 0 && j == 0){
                 if(person2[j][i + 1] != 0){
-                    draw_dorost_circle(i + 1 , j);
+                    draw_dorost_circle(i + 1 , j, 1);
                 }
                 if(person2[j + 1][i] != 0){
-                    draw_dorost_circle(i , j + 1);
+                    draw_dorost_circle(i , j + 1, 1);
                 }
             } else if( i == 5 && j == 0){
                 if(person2[j + 1][i] != 0){
-                    draw_dorost_circle(i , j + 1);
+                    draw_dorost_circle(i , j + 1, 1);
                 }
                 if(person2[j][i - 1] != 0){
-                    draw_dorost_circle(i - 1 , j);
+                    draw_dorost_circle(i - 1 , j, 1);
                 }
             }
         }
@@ -942,6 +990,10 @@ int dorost_select_map(int person ,int xmouse ,int ymouse , int fight){
     }
 }
 
+void clear_down_map(){
+    al_draw_filled_rectangle(0,820 , 1500,1000,moccasin);
+    al_flip_display();
+}
 
 void step(int step){
     if(step==1) {
@@ -1045,12 +1097,266 @@ void get_soldier(int tedad, int p , int nobat){
     }
 }
 
+int gereftan_sarzamin(int i , int j , int adad1 ,int person){
+    if(person == 1) {
+        if (j != 6 && i == 0) {
+            al_draw_filled_rectangle(150 * (i + 1), 100 * (j + 1), 150 * (i + 1) + 150, 100 * (j + 1) + 100, black);
+            adad(150 *(i+1),100*(j+1),adad1,person);
+        } else if (j < 2 && i == 1) {
+            al_draw_filled_rectangle(150 * (i + 1), 100 * (j + 1), 150 * (i + 1) + 150, 100 * (j + 1) + 100, black);
+            adad(150 *(i+1),100*(j+1),adad1,person);
+        } else if (j == 5 && i == 1) {
+            al_draw_filled_rectangle(150 * (i + 1), 100 * (j + 1), 150 * (i + 1) + 150, 100 * (j + 1) + 100, black);
+            adad(150 *(i+1),100*(j+1),adad1,person);
+        } else if (i <= 3 && i >= 2 && j <= 2) {
+            al_draw_filled_rectangle(150 * (i + 1), 100 * (j + 1), 150 * (i + 1) + 150, 100 * (j + 1) + 100, darkred);
+            adad(150 *(i+1),100*(j+1),adad1,person);
+        } else if (i >= 4 && j <= 3) {
+            al_draw_filled_rectangle(150 * (i + 1), 100 * (j + 1), 150 * (i + 1) + 150, 100 * (j + 1) + 100, green);
+            adad(150 *(i+1),100*(j+1),adad1,person);
+        } else if (i <= 3 && i >= 2 && j <= 5 && j >= 4) {
+            al_draw_filled_rectangle(150 * (i + 1), 100 * (j + 1), 150 * (i + 1) + 150, 100 * (j + 1) + 100, yellow);
+            adad(150 *(i+1),100*(j+1),adad1,person);
+        } else if (i == 3 && j == 3) {
+            al_draw_filled_rectangle(150 * (i + 1), 100 * (j + 1), 150 * (i + 1) + 150, 100 * (j + 1) + 100, yellow);
+            adad(150 *(i+1),100*(j+1),adad1,person);
+        } else if (j == 6 && i == 2) {
+            al_draw_filled_rectangle(150 * (i + 1), 100 * (j + 1), 150 * (i + 1) + 150, 100 * (j + 1) + 100, yellow);
+            adad(150 *(i+1),100*(j+1),adad1,person);
+        }
+        al_draw_rectangle(150 * (i + 1), 100 * (j + 1), 150 * (i + 1) + 150, 100 * (j + 1) + 100,al_map_rgb(128, 128, 128), 2);
+        al_flip_display();
+    }
+}
 
-int select_map2(int xmouse , int ymouse ,int person)    {
+int moratab_kardan_adad(int tedad , int *x1 ,int *x2,int *x3){
+    int max1 , midel1, min1;
+    if(tedad == 3){
+        for (int k = 1; k <= tedad; ++k) {
+            int r = rand() % 6 + 1;
+            if (k == 1)
+                *x1 = r;
+            if (k == 2)
+                *x2 = r;
+            if (k == 3)
+                *x3 = r;
+        }
+
+        max1 = *x1;
+        if (max1 < *x2)
+            max1 =* x2;
+        if (max1 < *x3)
+            max1 = *x3;
+
+        min1 = *x1;
+        if (min1 > *x2)
+            min1 = *x2;
+        if (min1 > *x3)
+            min1 = *x3;
+
+        midel1 = (*x1 + *x2 + *x3) - min1 - max1;
+        *x3 = max1;
+        *x2 = midel1;
+        *x1 = min1;
+    } else if( tedad == 2){
+        int r = rand() % 6 + 1;
+        max1 = r;
+        r = rand() % 6 + 1;
+        if(max1 < r){
+            min1 = max1;
+            max1 = r;
+        } else{
+            min1 = r;
+        }
+        *x3 = max1;
+        *x2 = min1;
+    } else if(tedad == 1){
+        int r = rand() % 6 + 1;
+        max1 = r;
+        *x3 = max1;
+    } else{
+        printf("eshtebah\n");
+    }
+}
+
+void tas(int adad , int chegad_jolo , int mohajem){
+    int x1 = 500 + (chegad_jolo*20) + (chegad_jolo - 1)*70;
+    int x2 = x1 +70;
+    int y1 , y2;
+    if(mohajem == 1) {
+        y1 = 820;
+        y2 = 890;
+    } else {
+        y1 = 910;
+        y2 = 980;
+        printf("y1%d y2%d\n",y1,y2);
+    }
+    if(adad == 6){
+        al_draw_filled_rectangle(x1,y1,x2,y2,white);
+        al_draw_filled_circle(x1+15,y1+15,5,black);
+        al_draw_filled_circle(x1+15,y1+35,5,black);
+        al_draw_filled_circle(x1+15,y1+55,5,black);
+        al_draw_filled_circle(x1+55,y1+15,5,black);
+        al_draw_filled_circle(x1+55,y1+35,5,black);
+        al_draw_filled_circle(x1+55,y1+55,5,black);
+    } else if(adad == 5){
+        al_draw_filled_rectangle(x1,y1,x2,y2,white);
+        al_draw_filled_circle(x1+15,y1+15,5,black);
+        al_draw_filled_circle(x1+55,y1+15,5,black);
+        al_draw_filled_circle(x1+55,y1+55,5,black);
+        al_draw_filled_circle(x1+15,y1+55,5,black);
+        al_draw_filled_circle(x1+35,y1+35,5,black);
+    } else if( adad == 4){
+        al_draw_filled_rectangle(x1,y1,x2,y2,white);
+        al_draw_filled_circle(x1+15,y1+15,5,black);
+        al_draw_filled_circle(x1+55,y1+15,5,black);
+        al_draw_filled_circle(x1+55,y1+55,5,black);
+        al_draw_filled_circle(x1+15,y1+55,5,black);
+    } else if(adad == 3){
+        al_draw_filled_rectangle(x1,y1,x2,y2,white);
+        al_draw_filled_circle(x1+15,y1+15,5,black);
+        al_draw_filled_circle(x1+35,y1+35,5,black);
+        al_draw_filled_circle(x1+55,y1+55,5,black);
+    } else if(adad == 2){
+        al_draw_filled_rectangle(x1,y1,x2,y2,white);
+        al_draw_filled_circle(x1+15,y1+35,5,black);
+        al_draw_filled_circle(x1+55,y1+35,5,black);
+    } else if( adad == 1){
+        al_draw_filled_rectangle(x1,y1,x2,y2,white);
+        al_draw_filled_circle(x1+35,y1+35,5,red);
+    }
+    al_flip_display();
+}
+
+void zabdar(int barande, int chegad_jolo){
+    int x1 = 500 + (chegad_jolo*20) + (chegad_jolo - 1)*70;
+    int x2 = x1 +70;
+    int y1 , y2;
+    if(barande == 1) {
+        y1 = 820;
+        y2 = 890;
+    } else {
+        y1 = 910;
+        y2 = 980;
+    }
+    al_draw_line(x1 +5 , y1 +5 , x2 - 5 , y2 -5 ,red , 5);
+    al_draw_line(x2 -5 , y1 + 5 , x1 + 5 , y2 - 5 ,red , 5);
+    al_flip_display();
+}
+
+void chap_mostatil(int mohajem,int tedad , int x3 , int x2 ,int x1 , int y2 , int y1){
+    font = al_load_ttf_font("D:\\poroje\\risk\\tahoma.ttf", 40, 0);
+    al_draw_filled_rectangle(300 , 820 , 500 , 890 ,black);
+    al_draw_text(font , white , 320, 830,0,"mohajem");
+    al_draw_filled_rectangle(300,910,500,980,white);
+    al_draw_text(font , black , 320, 920,0,"modafe");
+    if(mohajem == 1){
+        if(tedad == 3){
+            tas(x3,1,1);
+            tas(x2,2,1);
+            tas(x1,3,1);
+        } else if(tedad == 2){
+            tas(x3,1,1);
+            tas(x2,2,1);
+        } else if(tedad == 1){
+            tas(x3,1,1);
+        }
+    } else if( mohajem == 2){
+        if(tedad == 2){
+            tas(y2,1,2);
+            tas(y1,2,2);
+        } else if(tedad == 1){
+            tas(y2,1,2);
+        }
+    }
+    al_flip_display();
+}
+
+int batel(int tedad , int person , int i_red , int j_red , int i , int j){
+    int sarbaz_mohajem , sarbaz_modafe;
+    int max1 , min1 , midel1 , max2 , midel2,min2;
+    if(person == 1) {
+        sarbaz_mohajem = person1[j_red][i_red];
+        sarbaz_modafe  = person2[j][i];
+        if(sarbaz_mohajem >= 4){
+            sarbaz_mohajem = 3;
+            moratab_kardan_adad(sarbaz_mohajem,&min1,&midel1,&max1);
+            chap_mostatil(1 , sarbaz_mohajem,max1,midel1,min1,max2,midel2);
+        } else if(sarbaz_mohajem < 4 && sarbaz_mohajem > 1){
+            sarbaz_mohajem -= 1;
+            moratab_kardan_adad(sarbaz_mohajem,&min1,&midel1,&max1);
+            chap_mostatil(1 , sarbaz_mohajem,max1,midel1,min1,max2,midel2);
+        } else if( sarbaz_mohajem == 1){
+            return -1;
+        }
+
+        if(sarbaz_modafe >= 2){
+            sarbaz_modafe = 2;
+            moratab_kardan_adad(sarbaz_modafe,&min2,&midel2,&max2);
+            chap_mostatil(2 , sarbaz_modafe,max1,midel1,min1,max2,midel2);
+        } else{
+            sarbaz_modafe = 1;
+            moratab_kardan_adad(sarbaz_modafe,&min2,&midel2,&max2);
+            chap_mostatil(2 , sarbaz_modafe,max1,midel1,min1,max2,midel2);
+        }
+        al_rest(2);
+        if(sarbaz_mohajem == 3 && sarbaz_modafe == 1){
+            if(max2 < max1){
+                zabdar(2,1);
+                al_rest(2);
+                person2[j][i] -= 1;
+                person1[j][i] += sarbaz_mohajem ;
+                person1[j_red][i_red] -= 3;
+                gereftan_sarzamin(i_red , j_red ,person1[j_red][i_red] , person);
+                gereftan_sarzamin(i , j ,person1[j][i] , person);
+            } else{
+                zabdar(1,1);
+                al_rest(2);
+                person1[j_red][i_red] -= 1 ;
+                gereftan_sarzamin(i_red , j_red ,person1[j_red][i_red] , person);
+            }
+        } else if(sarbaz_mohajem == 2 && sarbaz_modafe ==1){
+            if(max2 < max1){
+                zabdar(2,1);
+                al_rest(2);
+                person2[j][i] -= 1;
+                person1[j][i] += sarbaz_mohajem ;
+                person1[j_red][i_red] -= 2;
+                gereftan_sarzamin(i_red , j_red ,person1[j_red][i_red] , person);
+                gereftan_sarzamin(i , j ,person1[j][i] , person);
+            } else{
+                zabdar(1,1);
+                al_rest(2);
+                person1[j_red][i_red] -= 1 ;
+                gereftan_sarzamin(i_red , j_red ,person1[j_red][i_red] , person);
+            }
+        } else if(sarbaz_mohajem == 1 && sarbaz_modafe == 1){
+            if(max2 < max1){
+                zabdar(2,1);
+                al_rest(2);
+                person2[j][i] -= 1;
+                person1[j][i] += sarbaz_mohajem ;
+                person1[j_red][i_red] -= 2;
+                gereftan_sarzamin(i_red , j_red ,person1[j_red][i_red] , person);
+                gereftan_sarzamin(i , j ,person1[j][i] , person);
+            } else{
+                zabdar(1,1);
+                al_rest(2);
+                person1[j_red][i_red] -= 1 ;
+                gereftan_sarzamin(i_red , j_red ,person1[j_red][i_red] , person);
+            }
+        }
+        printf("mohajem: %d %d %d\nmodafe: %d %d %d\n",max1,midel1,min1,max2,midel2,min2);
+
+    }
+
+}
+
+int select_map2(int xmouse , int ymouse ,int person)  {
     if(person == 1) {
         for (int i = 0; i < 6; ++i) {
             for (int j = 0; j < 7; ++j) {
-                if (person2[j][i] == 0 && select(150 * (i + 1), 100 * (j + 1), 150 * (i + 1) + 150, 100 * (j + 1) + 100, xmouse, ymouse)) {
+                if (person1[j][i] != 0 && person1[j][i] != 1&& select(150 * (i + 1), 100 * (j + 1), 150 * (i + 1) + 150, 100 * (j + 1) + 100, xmouse, ymouse)) {
                     if (j != 6 && i == 0 ) {
                         return 1;
                     } else if (j < 2 && i == 1) {
@@ -1074,7 +1380,7 @@ int select_map2(int xmouse , int ymouse ,int person)    {
     }else if(person == 2) {
         for (int i = 0; i < 6; ++i) {
             for (int j = 0; j < 7; ++j) {
-                if (person1[j][i] == 0 &&select(150 * (i + 1), 100 * (j + 1), 150 * (i + 1) + 150, 100 * (j + 1) + 100, xmouse, ymouse)) {
+                if (person2[j][i] != 0 &&select(150 * (i + 1), 100 * (j + 1), 150 * (i + 1) + 150, 100 * (j + 1) + 100, xmouse, ymouse)) {
                     if (j != 6 && i == 0) {
                         return 1;
                     } else if (j < 2 && i == 1) {
@@ -1100,6 +1406,41 @@ int select_map2(int xmouse , int ymouse ,int person)    {
 }
 
 
+int select_map_sarzamin_doshman(int tedad , int person , int xmouse , int ymouse , int i_red , int j_red ){
+    clear_down_map();
+    if(tedad == 2){
+        if(person == 1){
+            if(person2[j_red][i_red - 1] != 0 && select(150 * (i_red - 1 + 1), 100 * (j_red + 1), 150 * (i_red - 1 + 1) + 150, 100 * (j_red + 1) + 100, xmouse, ymouse) == 1){
+                destroy_dorost_circle();
+                draw_circle(150 * (i_red + 1), 100 * (j_red + 1));
+                draw_dorost_circle(i_red -1 ,j_red ,2);
+                batel(tedad,person,i_red,j_red,i_red - 1, j_red);
+                return 1;
+            } else if(person2[j_red][i_red + 1] != 0 && select(150 * (i_red + 1 + 1), 100 * (j_red + 1), 150 * (i_red + 1 + 1) + 150, 100 * (j_red + 1) + 100, xmouse, ymouse) == 1){
+                destroy_dorost_circle();
+                draw_circle(150 * (i_red + 1), 100 * (j_red + 1));
+                draw_dorost_circle(i_red + 1 ,j_red ,2);
+                batel(tedad,person,i_red,j_red,i_red + 1, j_red);
+                return 1;
+            } else if(person2[j_red - 1][i_red] != 0 && select(150 * (i_red + 1), 100 * (j_red -1 + 1), 150 * (i_red + 1) + 150, 100 * (j_red -1 + 1) + 100, xmouse, ymouse) == 1){
+                destroy_dorost_circle();
+                draw_circle(150 * (i_red + 1), 100 * (j_red + 1));
+                draw_dorost_circle(i_red,j_red - 1,2);
+                batel(tedad,person,i_red,j_red,i_red , j_red- 1);
+                return 1;
+            } else if(person2[j_red + 1][i_red] != 0 && select(150 * (i_red + 1), 100 * (j_red + 1 + 1), 150 * (i_red + 1) + 150, 100 * (j_red + 1+ 1) + 100, xmouse, ymouse) == 1){
+                destroy_dorost_circle();
+                draw_circle(150 * (i_red + 1), 100 * (j_red + 1));
+                draw_dorost_circle(i_red ,j_red  + 1,2);
+                batel(tedad,person,i_red,j_red,i_red , j_red + 1);
+                return 1;
+            }
+            return 0;
+        }
+    }
+}
+
+
 int main() {
 
     al_init();
@@ -1118,7 +1459,7 @@ int main() {
 
     ALLEGRO_TIMER *timer = al_create_timer(1.0 / 30.0);
     ALLEGRO_EVENT_QUEUE *queue = al_create_event_queue();
-    ALLEGRO_DISPLAY *disp = al_create_display(1500, 950);
+    ALLEGRO_DISPLAY *disp = al_create_display(1500, 1000);
     ALLEGRO_MOUSE_STATE msestate;
 
     if (!disp) {
@@ -1144,7 +1485,9 @@ int main() {
 
     al_start_timer(timer);
 
-    int tedad = 0, x = 0, y = 0 , nobat = 1 ,p1 , p2 , p3 , p4 , sarbaz ,break1 = 0 , z =0 , pos_xmouse , pos_ymouse , tedad_select =0;
+    int tedad = 0, x = 0, y = 0 , nobat = 1 ,p1 , p2 , p3 , p4 , sarbaz ,break1 = 0 , z =0 ,  tedad_select =0;
+//    int  pos_xmouse , pos_ymouse ;
+    int i1 , j1;
     bool redraw = true;
 
     // moshakhas kardan tedad bazikon ha
@@ -1194,7 +1537,7 @@ int main() {
         soldier(tedad);
         get_sarbaz(tedad,p1,1);
         get_sarbaz(tedad,p2,2);
-       while (p1 > 0 || p2 > 0) {
+        while (p1 > 0 || p2 > 0) {
             al_is_event_queue_empty(queue);
             al_wait_for_event(queue, &event);
             if (event.type == ALLEGRO_EVENT_TIMER)
@@ -1237,7 +1580,7 @@ int main() {
         clear_get_sarbaz();
         al_flip_display();
 
-        while (1) {
+        while(1){
             get_sarbaz2(tedad ,0);
             nobat = 1;
             nobati(nobat);
@@ -1247,7 +1590,7 @@ int main() {
                 al_wait_for_event(queue, &event);
                 if (event.type == ALLEGRO_EVENT_MOUSE_BUTTON_UP) {
                     if (select(1275, 200, 1475, 300, event.mouse.x, event.mouse.y) == 1) {
-                        get_sarbaz2(tedad ,1);
+                        get_sarbaz2(tedad, 1);
                         sarbaz = hesab_sarbaz_ha(nobat);
                         nobati(nobat);
                         print_tedad_sarbaz(sarbaz, nobat);
@@ -1262,18 +1605,135 @@ int main() {
                                 }
                             }
                         }
+                        if(sarbaz == 0)
+                            break;
+                    }
+                }
+            }
+
+
+
+            al_rest(1);
+            clear_get_sarbaz();
+            fight(2,1);
+            while (1){
+                al_rest(0.01);
+                al_is_event_queue_empty(queue);
+                al_wait_for_event(queue, &event);
+                if (event.type == ALLEGRO_EVENT_MOUSE_BUTTON_UP) {
+                    if (select(1275, 325, 1475, 425, event.mouse.x, event.mouse.y) == 1) {
+                        fight(2, 2);
+                        while (1){
+                            al_rest(0.01);
+                            al_is_event_queue_empty(queue);
+                            al_wait_for_event(queue, &event);
+                            if (event.type == ALLEGRO_EVENT_MOUSE_BUTTON_UP) {
+                                if (select_map2(event.mouse.x,event.mouse.y,nobat) == 1) {
+                                    clear_down_map();
+                                    destroy_dorost_circle();
+                                    dorost_select_map(nobat, event.mouse.x, event.mouse.y, 1);
+                                    dorost_select(nobat, event.mouse.x, event.mouse.y ,&i1 ,&j1);
+                                    while (1) {
+                                        al_rest(0.01);
+                                        al_is_event_queue_empty(queue);
+                                        al_wait_for_event(queue, &event);
+                                        if (event.type == ALLEGRO_EVENT_MOUSE_BUTTON_UP) {
+                                            if (select_map_sarzamin_doshman(tedad, nobat,event.mouse.x, event.mouse.y,i1,j1) == 1) {
+
+                                            }
+                                            if (select_map2(event.mouse.x,event.mouse.y,nobat) == 1) {
+                                                clear_down_map();
+                                                destroy_dorost_circle();
+                                                dorost_select_map(nobat, event.mouse.x, event.mouse.y, 1);
+                                                dorost_select(nobat, event.mouse.x, event.mouse.y,&i1 ,&j1);
+                                            }
+                                        }
+                                    }
+//                                    while (1) {
+//                                        al_rest(0.01);
+//                                        al_is_event_queue_empty(queue);
+//                                        al_wait_for_event(queue, &event);
+//                                        if (event.type == ALLEGRO_EVENT_MOUSE_BUTTON_UP) {
+//                                            if (select_map2(event.mouse.x, event.mouse.y,nobat)) {
+//                                                printf("aaa%d\n",nobat);
+//                                            }
+//                                        }
+//                                        al_rest(0.01);
+//                                        al_is_event_queue_empty(queue);
+//                                        al_wait_for_event(queue, &event);
+//                                        if (event.type == ALLEGRO_EVENT_MOUSE_BUTTON_UP) {
+//                                            if (select(1150, 325, 1250, 425, event.mouse.x,event.mouse.y) == 1) {
+//                                                destroy_dorost_circle();
+//                                                al_flip_display();
+//                                                tedad_select = 0;
+//                                                clear_get_sarbaz();
+//                                                fight(3, 1);
+//                                                break;
+//                                            }
+//                                        }
+//                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        }
+
+
+
+
+        while (1) {
+            get_sarbaz2(tedad ,0);
+            nobat = 1;
+            nobati(nobat);
+            while (1) {
+                al_rest(0.01);
+                al_is_event_queue_empty(queue);
+                al_wait_for_event(queue, &event);
+                if (event.type == ALLEGRO_EVENT_MOUSE_BUTTON_UP) {
+                    if (select(1275, 200, 1475, 300, event.mouse.x, event.mouse.y) == 1) {
+                        get_sarbaz2(tedad ,1);
+                        sarbaz = hesab_sarbaz_ha(nobat);
+                        nobati(nobat);
+                        print_tedad_sarbaz(sarbaz, nobat);
+//                        while (sarbaz != 0) {
+//                            al_rest(0.01);
+//                            al_is_event_queue_empty(queue);
+//                            al_wait_for_event(queue, &event);
+//                            if (event.type == ALLEGRO_EVENT_MOUSE_BUTTON_UP) {
+//                                if (select_map(event.mouse.x, event.mouse.y, nobat) == 1) {
+//                                    sarbaz -= 1;
+//                                    print_tedad_sarbaz(sarbaz, nobat);
+//                                }
+//                            }
+//                        }
                         al_rest(1);
                         clear_get_sarbaz();
-                        fight(tedad,0,0,0,0,1);
-                        finish();
+                        fight(2,1);
+//                        finish();
                         while (1) {
                             al_rest(0.01);
                             al_is_event_queue_empty(queue);
                             al_wait_for_event(queue, &event);
                             if (event.type == ALLEGRO_EVENT_MOUSE_BUTTON_UP) {
                                 if (select(1275, 325, 1475, 425, event.mouse.x, event.mouse.y) == 1) {
-                                    fight(2, 1275, 325, 1475, 425, 2);
-                                    finish2(1);
+                                    fight(2, 2);
+//                                    finish2(1);
                                     while (1) {
                                         al_rest(0.01);
                                         al_is_event_queue_empty(queue);
@@ -1281,7 +1741,7 @@ int main() {
                                         if (event.type == ALLEGRO_EVENT_MOUSE_BUTTON_UP) {
                                             if (tedad_select == 0 && dorost_select_map(nobat, event.mouse.x, event.mouse.y,1) == 1) {
                                                 tedad_select = 1;
-                                                dorost_select(nobat, event.mouse.x, event.mouse.y);
+                                                dorost_select(nobat, event.mouse.x, event.mouse.y,&i1 ,&j1);
                                                 while (1) {
                                                     al_rest(0.01);
                                                     al_is_event_queue_empty(queue);
@@ -1291,14 +1751,20 @@ int main() {
                                                             printf("aaa%d\n",nobat);
                                                         }
                                                     }
-                                                    if (select(1150, 325, 1250, 425, event.mouse.x, event.mouse.y) == 1) {
-                                                        destroy_dorost_circle();
-                                                        al_flip_display();
-                                                        tedad_select = 0;
-                                                        clear_get_sarbaz();
-                                                        fight(tedad,0,0,0,0,1);
-                                                        finish();
-                                                        break;
+                                                    al_rest(0.01);
+                                                    al_is_event_queue_empty(queue);
+                                                    al_wait_for_event(queue, &event);
+                                                    if (event.type == ALLEGRO_EVENT_MOUSE_BUTTON_UP) {
+                                                        if (select(1150, 325, 1250, 425, event.mouse.x,event.mouse.y) == 1) {
+                                                            destroy_dorost_circle();
+                                                            al_flip_display();
+                                                            tedad_select = 0;
+                                                            clear_get_sarbaz();
+                                                            fight(3, 1);
+//                                                        finish();
+
+                                                            break;
+                                                        }
                                                     }
                                                 }
                                             }
@@ -1308,8 +1774,8 @@ int main() {
                                     tedad_select = 0;
                                 }
                                 if (select(1275, 450, 1475, 550, event.mouse.x, event.mouse.y) == 1) {
-                                    fight(2, 1275, 450, 1475, 550, 3);
-                                    finish2(2);
+                                    fight(3, 2);
+//                                    finish2(2);
                                     while (1){
                                         al_rest(0.01);
                                         al_is_event_queue_empty(queue);
@@ -1317,17 +1783,17 @@ int main() {
                                         if(event.type == ALLEGRO_EVENT_MOUSE_BUTTON_UP){
                                             if (dorost_select_map(nobat, event.mouse.x, event.mouse.y,2) == 1 && tedad_select == 0) {
                                                 tedad_select = 1;
-                                                dorost_select(nobat, event.mouse.x, event.mouse.y);
-                                                pos_xmouse = event.mouse.x;
-                                                pos_ymouse = event.mouse.y;
+                                                dorost_select(nobat, event.mouse.x, event.mouse.y,&i1 ,&j1);
+//                                                pos_xmouse = event.mouse.x;
+//                                                pos_ymouse = event.mouse.y;
                                             }
                                             if(select(1150, 450, 1250, 550, event.mouse.x, event.mouse.y) == 1){
-                                                destroy_dorost_select(nobat, pos_xmouse, pos_ymouse);
+//                                                destroy_dorost_select(nobat, pos_xmouse, pos_ymouse);
                                                 al_flip_display();
                                                 tedad_select = 0;
                                                 clear_get_sarbaz();
-                                                fight(tedad,0,0,0,0,1);
-                                                finish();
+//                                                fight(2,1);
+//                                                finish();
                                                 break;
                                             }
                                         }
@@ -1385,18 +1851,18 @@ int main() {
                         }
                         al_rest(1);
                         clear_get_sarbaz();
-                        fight(tedad,0,0,0,0,1);
-                        finish();
+//                        fight(tedad,0,0,0,0,1);
+//                        finish();
                         while (1) {
                             al_rest(0.01);
                             al_is_event_queue_empty(queue);
                             al_wait_for_event(queue, &event);
                             if (event.type == ALLEGRO_EVENT_MOUSE_BUTTON_UP) {
                                 if (select(1275, 325, 1475, 425, event.mouse.x, event.mouse.y) == 1) {
-                                    fight(2, 1275, 325, 1475, 425, 2);
+//                                    fight(2, 1275, 325, 1475, 425, 2);
                                 }
                                 if (select(1275, 450, 1475, 550, event.mouse.x, event.mouse.y) == 1) {
-                                    fight(2, 1275, 450, 1475, 550, 3);
+//                                    fight(2, 1275, 450, 1475, 550, 3);
                                 }
                                 if (select(1275, 600, 1475, 700, event.mouse.x, event.mouse.y) == 1) {
                                     break1 = 1;
